@@ -76,9 +76,9 @@ html {
   background-color: #fff;
   position: fixed;
   top: 15px;
-  left: 120px;
-  width: 100%;
-  max-width: 540px;
+  left: 90px;
+  width: 540px;
+  max-width: 100%;
   border-radius: 5px;
   border-bottom: 1px solid #ebebeb;
 }
@@ -190,42 +190,33 @@ header h2 {
 
 /* PLAYLIST */
 .scroll {
+  padding-right: 4px;
   position: absolute;
-  right: 145px;
+  right: 40px;
   top: 15px;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-right: 5px;
-}
-.scroll {
+  width: 580px;
+  max-width: 100%;
+  margin-top: 12px;
   /* Set a fixed height for the content container to enable scrolling */
   height: 600px;
   overflow-y: scroll; /* Enable vertical scrolling */
   scrollbar-width: thin; /* Set scrollbar width */
-
 }
-
 /* Customize the scrollbar track */
 .scroll::-webkit-scrollbar {
   width: 8px;
 }
-
 /* Customize the scrollbar thumb (draggable part) */
 .scroll::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 4px;
 }
-
 /* Change the appearance of the scrollbar on Firefox */
 .scroll {
   scrollbar-color: #888 transparent; /* thumb color, track color */
-  scrollbar-width: thin;
 }
-
 .playlist {
   max-width: 540px;
-  padding: 12px 0px;
   margin-left: auto;
   margin-right: auto;
 }
