@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuẩn bị tiến đến bất ngờ</title>
+    <link rel="stylesheet" href="./asset/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="main">
+        <video poster="./asset/296177730_172477061934174_1359433803686400334_n.jpg" autoplay loop muted class="video-background">
+            <source
+                src="./Anime Aesthetic 4K.mp4">
+            <!-- Thêm các phần tử <source> bổ sung cho các định dạng video khác nhau -->
+        </video>
+        <form class="form" id="form-1">
+            <h3 class="heading">Chào người may mắn nhất hôm nay</h3>
+            <p class="desc">Hãy dùng những gì đã được cho nhé❤️</p>
+            <div class="spacer"></div>
+            <div class="form-group">
+                <input id="fullname" name="fullname" type="text" placeholder=" Nhập nickname thật cool"
+                    class="form-control">
+                <span class="form-message"></span>
+            </div>
+            <div class="form-group">
+                <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+                <span class="form-message"></span>
+            </div>
+            <button class="form-submit" type="button" onclick="validateForm()">Đăng nhập</button>
+        </form>
+    </div>
+</body>
+<script>
+    function validateForm() {
+  const username = document.getElementById("fullname").value;
+  const password = document.getElementById("password").value;
+
+  if (username === "hanh" && password === "2003") {
+    // Chuyển sang trang tiếp theo
+    alert("Đăng nhập thành công! Đang chuyển hướng đến trang tiếp theo...");
+    window.location.href = "./main.html";
+  } else {
+    // Hiển thị thông báo lỗi và yêu cầu nhập lại
+    alert("Sai thông tin rồi :(");
+    const errorMessage = document.getElementById("errorMessage");
+    errorMessage.style.display = "block";
+  }
+}
+</script>
+
+</html>

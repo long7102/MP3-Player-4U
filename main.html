@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Mp3 Player 4U</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./asset/style.css">
+    <link rel="stylesheet" href="./asset/responsive.css">
+    <link rel="shortcut icon" href='./asset/Overture.png'>
+</head>
+
+<body>
+    <div class="ambience">
+        <div class="rain" style="margin-bottom: 25px;">
+            <i class="fa fa-cloud-rain white"></i>
+            <audio src="./asset/Ambience/rain sound.mp3" id="rain"></audio>
+        </div>
+        <div class="thunder" style="margin-bottom: 25px;">
+            <i class="fa-solid fa-cloud-bolt white"></i>
+            <audio src="./asset/Ambience/thunder.mp3" id="thunder"></audio>
+        </div>
+        <div class="wind" style="margin-bottom: 25px;">
+            <i class="fa-solid fa-wind white"></i>
+            <audio src="./asset/Ambience/wind.mp3" id="wind"></audio>
+        </div>
+        <div class="fire" style="margin-bottom: 25px;">
+            <i class="fa fa-fire white"></i>
+            <audio src="./asset//Ambience/Fireplace Sounds.mp3" id="fire"></audio>
+        </div>
+        <div class="night" style="margin-bottom: 25px;">
+            <i class="fa-solid fa-moon white"></i>
+            <audio src="/asset/Ambience/night.mp3" id="night"></audio>
+        </div>
+        <div class="forest" style="margin-bottom: 25px;">
+            <i class="fa-solid fa-tree white"></i>
+            <audio src="./asset/Ambience/forest.mp3" id="forest"></audio>
+        </div>
+        <div class="train" style="margin-bottom: 25px;">
+            <i class="fa-solid fa-train white"></i>
+            <audio src="./asset/Ambience/train.mp3" id="train"></audio>
+        </div>
+        <div class="plane" style="margin-bottom: 25px;">
+            <i class="fa-solid fa-plane white"></i>
+            <audio src="./asset/Ambience/plane.mp3" id="plane"></audio>
+        </div>
+    </div>
+    <div class="player-container" >
+    <div class="player">
+        <!-- Dashboard -->
+        <div class="dashboard">
+            <div class="video-container">
+                <video autoplay muted loop id="video-background"
+                    poster="./asset/296177730_172477061934174_1359433803686400334_n.jpg">
+                    <source src="./just the rain clips.-(1080p).mp4"
+                        type="video/mp4">
+                    <!-- Thêm các phần tử <source> bổ sung cho các định dạng video khác nhau -->
+                </video>
+                <div class="content">
+                    <!-- Header -->
+                    <header>
+                        <h4>Now playing:</h4>
+                        <h2>Long đẹp trai quá đi mất</h2>
+                    </header>
+                    <div class="heart">
+                        <i class="fa-solid fa-heart white" id="heart"></i>
+                    </div>
+                    <!-- CD -->
+                    <div class="cd">
+                        <div class="cd-thumb">
+                        </div>
+                    </div>
+
+                    <!-- Control -->
+                    <div class="control">
+                        <div class="btn btn-repeat">
+                            <i class="fas fa-redo"></i>
+                        </div>
+                        <div class="btn btn-prev">
+                            <i class="fas fa-step-backward"></i>
+                        </div>
+                        <div class="btn btn-toggle-play">
+                            <i class="fas fa-pause icon-pause"></i>
+                            <i class="fas fa-play icon-play"></i>
+                        </div>
+                        <div class="btn btn-next">
+                            <i class="fas fa-step-forward"></i>
+                        </div>
+                        <div class="btn btn-random">
+                            <i class="fas fa-random"></i>
+                        </div>
+                    </div>
+
+                    <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+
+                    <audio id="audio" src=""></audio>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Playlist -->
+    <div class="scroll">
+    <div class="playlist">
+    </div>
+</div>
+</div>
+    <script>
+        const PlAYER_STORAGE_KEY = "Long_PLAYER";
+        const $ = document.querySelector.bind(document);
+        const $$ = document.querySelectorAll.bind(document);
+        const heading = $('header h2')
+        const cdThumb = $('.cd-thumb')
+        const audio = document.getElementById('audio')
+        var author = $('.author')
+        var cd = $('.cd')
+        var playBtn = $('.btn-toggle-play')
+        var player = $('.player')
+        var progress = $('#progress')
+        var prevBtn = $('.btn-prev')
+        var nextBtn = $('.btn-next')
+        var randomBtn = $('.btn-random')
+        var repeatBtn = $('.btn-repeat')
+        var playlist = $('.playlist')
+        const app = {
+            currentIndex: 0,
+            isPlaying: false,
+            isRandom: false,
+            isRepeat: false,
+            config: {},
+            // config: JSON.parse(localStorage.getItem(PlAYER_STORAGE_KEY)) || {},
+            songs: [
+                {
+                    name: "The Four Seasons - Spring ",
+                    singer: "Antonio Vivaldi",
+                    path: "./asset/music/Antonio Vivaldi The Four Seasons Spring Allegro.mp3",
+                    image: "./asset/author/Vivaldi.jpg"
+                },
+                {
+                    name: "The Four Seasons - Summer ",
+                    singer: "Antonio Vivaldi",
+                    path: "./asset/music/Antonio Vivaldi The Four Seasons Summer Presto.mp3",
+                    image: "./asset/author/Vivaldi.jpg"
+                },
+                {
+                    name: "The Four Seasons - Spring ",
+                    singer: "Antonio Vivaldi",
+                    path: "./asset/music/Antonio Vivaldi Autumn from The Four Seasons.mp3",
+                    image: "./asset/author/Vivaldi.jpg"
+                },
+                {
+                    name: "The Four Seasons - Winter ",
+                    singer: "Antonio Vivaldi",
+                    path: "./asset/music/Antonio The Four Seasons Winter   .mp3",
+                    image: "./asset/author/Vivaldi.jpg"
+                },
+                {
+                    name: "Storm",
+                    singer: "Antonio Vivaldi",
+                    path: "./asset/music/Antonio Vivaldi  Storm.mp3",
+                    image: "./asset/author/Vivaldi.jpg"
+                },
+                {
+                    name: "Violin Concerto in A Minor RV356",
+                    singer: "Antonio Vivaldi",
+                    path: "./asset/music/Vivaldi  Violin Concerto in A Minor RV356.mp3",
+                    image: "./asset/author/Vivaldi.jpg"
+                },
+                {
+                    name: "Concerto No 4 in A Major BWV 1055",
+                    singer: "Johann Sebastian Bach",
+                    path: "./asset/music/Bach  Harpsichord Concerto No4 in A Major BWV 1055  13.mp3",
+                    image: "./asset/author/Johann-Sebastian-Bac-02.jpg"
+                },
+                {
+                    name: "Orchestral Suite 2 In B Minor BWV 1067",
+                    singer: "Johann Sebastian Bach",
+                    path: "./asset/music/Bach Orchestral Suite 2 In B Minor BWV 1067  7 Badinerie.mp3",
+                    image: "./asset/author/Johann-Sebastian-Bac-02.jpg"
+                },
+                {
+                    name: "Badinerie",
+                    singer: "Johann Sebastian Bach",
+                    path: "./asset/music/Bach Badinerie  Johann Sebastian .mp3",
+                    image: "./asset/author/Johann-Sebastian-Bac-02.jpg"
+                },
+                {
+                    name: "Bouree In E Minor",
+                    singer: "Johann Sebastian Bach",
+                    path: "./asset/music/Bach  Bouree In E Minor.mp3",
+                    image: "./asset/author/Johann-Sebastian-Bac-02.jpg"
+                },
+                {
+                    name: "6th Symphony  Pastoral",
+                    singer: "Ludwig van Beethoven",
+                    path: "./asset/music/Beethoven  6th Symphony  Pastoral.mp3",
+                    image: "./asset/author/Ludwig_Beethoven_-768x768.png"
+                },
+                {
+                    name: "Allegro Con Brío",
+                    singer: "Ludwig van Beethoven",
+                    path: "./asset/music/Beethoven 5th Symphony 1st movement Allegro Con Brío.mp3",
+                    image: "./asset/author/Ludwig_Beethoven_-768x768.png"
+                },
+                {
+                    name: "Fur Elise",
+                    singer: "Ludwig van Beethoven",
+                    path: "./asset/music/Beethoven fur elise.mp3",
+                    image: "./asset/author/Ludwig_Beethoven_-768x768.png"
+                },
+                {
+                    name: "Prelude to Act 1 Of Carmen",
+                    singer: "Georges Bizet",
+                    path: "./asset/music/Bizet  Prelude to Act 1 Of Carmen  Bestof Classical Music.mp3",
+                    image: "./asset/author/2295726.jpg"
+                },
+                {
+                    name: "Habanera from Carmen Suite No2",
+                    singer: "Georges Bizet",
+                    path: "./asset/music/Bizet  Habanera from Carmen Suite No2.mp3",
+                    image: "./asset/author/2295726.jpg"
+                },
+                {
+                    name: "Les Toreadors from Carmen Suite No 1",
+                    singer: "Georges Bizet",
+                    path: "./asset/music/Bizet  Les Toreadors from Carmen Suite No 1.mp3",
+                    image: "./asset/author/2295726.jpg"
+                },
+                {
+                    name: "Nocturne op9 No2",
+                    singer: "Frédéric Chopin",
+                    path: "./asset/music/Chopin  Nocturne op9 No2.mp3",
+                    image: "./asset/author/hadi-karimi-chopin-2-1-e1633092217917.jpg"
+                },
+                {
+                    name: "Spring Waltz Mariage dAmour",
+                    singer: "Frédéric Chopin",
+                    path: "./asset/music/Chopin  Spring Waltz Mariage dAmour.mp3",
+                    image: "./asset/author/hadi-karimi-chopin-2-1-e1633092217917.jpg"
+                },
+                {
+                    name: "Dmitri Shostakovich",
+                    singer: "Frédéric Chopin",
+                    path: "./asset/music/Dmitri Shostakovich  Waltz No 2.mp3",
+                    image: "./asset/author/shostakovich.jpg"
+                },
+                {
+                    name: "Holberg Suite Praeludium",
+                    singer: "Edvard Grieg",
+                    path: "./asset/music/Edvard Grieg  Holberg Suite  Praeludium.mp3",
+                    image: "./asset/author/grieg_ts.jpg"
+                },
+                {
+                    name: "Morning Mood",
+                    singer: "Edvard Grieg",
+                    path: "./asset/music/Edvard Grieg  Peer Gynt  Suite No 1 Op 46  I Morning Mood.mp3",
+                    image: "./asset/author/grieg_ts.jpg"
+                },
+                {
+                    name: "In the Hall of the Mountain King",
+                    singer: "Edvard Grieg",
+                    path: "./asset/music/Edvard Grieg In the Hall of the Mountain King from Peer Gynt.mp3",
+                    image: "./asset/author/grieg_ts.jpg"
+                },
+                {
+                    name: " Holberg Suite Praeludium",
+                    singer: "Edvard Grieg",
+                    path: "./asset/music/Edvard Grieg  Holberg Suite  Praeludium.mp3",
+                    image: "./asset/author/grieg_ts.jpg"
+                },
+                {
+                    name: "Flight Of The Bumblebee",
+                    singer: "Rimsky Korsakov",
+                    path: "./asset/music/Flight Of The Bumblebee  RimskyKorsakov.mp3",
+                    image: "./asset/author/rimsky.jpg"
+                },
+                {
+                    name: "Love Dream",
+                    singer: "Franz Liszt",
+                    path: "./asset/music/Franz Liszt  Liebestraum  Love Dream.mp3",
+                    image: "./asset/author/franz liszt.jpg"
+                },
+                {
+                    name: "No 3 in A flat",
+                    singer: "Franz Liszt",
+                    path: "./asset/music/Liszt Liebestraum No 3 in A flat.mp3",
+                    image: "./asset/author/JohannesBrahms.jpg"
+                },
+                {
+                    name: "Marche Militaire",
+                    singer: "Franz Schubert",
+                    path: "./asset/music/Franz Schubert  Marche Militaire.mp3",
+                    image: "./asset/author/schubert.jpg"
+                },
+                {
+                    name: "Serenade",
+                    singer: "Franz Schubert",
+                    path: "./asset/music/Schubert  Serenade.mp3",
+                    image: "./asset/author/schubert.jpg"
+                },
+                {
+                    name: "Ständchen D957",
+                    singer: "Franz Schubert",
+                    path: "./asset/music/Schubert  Ständchen D957.mp3",
+                    image: "./asset/author/schubert.jpg"
+                },
+                {
+                    name: "El Barbero de Sevilla",
+                    singer: "Gioacchino Rossini",
+                    path: "./asset/music/Gioacchino Rossini  El Barbero de Sevilla.mp3",
+                    image: "./asset/author/Gioachino-Rossini.jpg"
+                },
+                {
+                    name: "The Barber Of Seville Overture",
+                    singer: "Gioacchino Rossini",
+                    path: "./asset/music/Gioachino Rossini  The Barber Of Seville  Overture.mp3",
+                    image: "./asset/author/Gioachino-Rossini.jpg"
+                },
+                {
+                    name: "William Tell Overture Final",
+                    singer: "Gioacchino Rossini",
+                    path: "./asset/music/Rossini William Tell Overture Final.mp3",
+                    image: "./asset/author/rossini.jpg"
+                },
+                {
+                    name: "Die Fledermaus Overture",
+                    singer: "Johann Strauss II",
+                    path: "./asset/music/Johann Strauss II  Die Fledermaus Overture.mp3",
+                    image: "./asset/author/Johann_Strauss_II_1890.jpg"
+                },
+                {
+                    name: "The Blue Danube Waltz",
+                    singer: "Johann Strauss II",
+                    path: "./asset/music/Johann Strauss II  The Blue Danube Waltz.mp3",
+                    image: "./asset/author/Johann_Strauss_II_1890.jpg"
+                },
+                {
+                    name: "Voices of Spring Waltz",
+                    singer: "Johann Strauss II",
+                    path: "./asset/music/Johann Strauss II  Voices of Spring Waltz.mp3",
+                    image: "./asset/author/Johann_Strauss_II_1890.jpg"
+                },
+                {
+                    name: "Radetzky March",
+                    singer: "Johann Strauss II",
+                    path: "./asset/music/Johann Strauss Sr  Radetzky March.mp3",
+                    image: "./asset/author/Johann_Strauss_II_1890.jpg"
+                },
+                {
+                    name: "Frühlingsstimmen op 410",
+                    singer: "Johann Strauss II",
+                    path: "./asset/music/Frühlingsstimmen op 410  Johann Strauss II.mp3",
+                    image: "./asset/author/Johann_Strauss_II_1890.jpg"
+                },
+                {
+                    name: "Entry Of The Gladiators ",
+                    singer: "Julius Fucik",
+                    path: "./asset/music/Entry Of The Gladiators  Julius Fucik.mp3",
+                    image: "./asset/author/fuick.jpg"
+                },
+                {
+                    name: "Hungarian Dance No 5",
+                    singer: "Johannes Brahms",
+                    path: "./asset/music/Johannes Brahms  Hungarian Dance No 5.mp3",
+                    image: "./asset/author/JohannesBrahms.jpg"
+                },
+                {
+                    name: "Minuet String Quintet",
+                    singer: "Luigi Boccherini",
+                    path: "./asset/music/Luigi Boccherini  Minuet  String Quintet.mp3",
+                    image: "./asset/author/Italian-composer-Luigi-Boccherini.jpg"
+                },
+                {
+                    name: "Wedding March",
+                    singer: "Felix Mendelssohn",
+                    path: "./asset/music/Mendelssohn A Midsummer Nights Dream  Wedding March.mp3",
+                    image: "./asset/author/mandelson.jpg"
+                },
+                {
+                    name: "Lacrimosa",
+                    singer: "Wolfgang Amadeus Mozart",
+                    path: "./asset/music/Mozart  Lacrimosa.mp3",
+                    image: "./asset/author/mozart.jpg"
+                },
+                {
+                    name: "Eine Kleine Nachtmusik in G Major KV525",
+                    singer: "Wolfgang Amadeus Mozart",
+                    path: "./asset/music/Mozart  String Serenade No13 Eine Kleine Nachtmusik in G Major KV525  1st Movement.mp3",
+                    image: "./asset/author/mozart.jpg"
+                },
+                {
+                    name: "Molto Allegro",
+                    singer: "Wolfgang Amadeus Mozart",
+                    path: "./asset/music/Mozart Symphony 40 in G Minor K 550  1 Molto Allegro.mp3",
+                    image: "./asset/author/mozart.jpg"
+                },
+
+                {
+                    name: "Rondo Alla Turca",
+                    singer: "Wolfgang Amadeus Mozart",
+                    path: "./asset/music/Mozart Turkish March   Rondo Alla Turca.mp3",
+                    image: "./asset/author/mozart.jpg"
+                },
+                {
+                    name: "Can Can",
+                    singer: "Jackques Offenbach",
+                    path: "./asset/music/Offenbach  Can Can.mp3",
+                    image: "./asset/author/offenbach.jpg"
+                },
+                {
+                    name: "Infernal Galop",
+                    singer: "Jackques Offenbach",
+                    path: "./asset/music/Offenbach  Infernal Galop.mp3",
+                    image: "./asset/author/offenbach.jpg"
+                },
+                {
+                    name: "La Campanella Vanessa Mae",
+                    singer: "Niccolò Paganini",
+                    path: "./asset/music/Paganini La Campanella Vanessa Mae.mp3",
+                    image: "./asset/author/Paganini.jpg"
+                },
+                {
+                    name: "Por una Cabeza ",
+                    singer: "Carlos Gardel",
+                    path: "./asset/music/Por una Cabeza  Carlos Gardel.mp3",
+                    image: "./asset/author/carlos.jpg"
+                },
+                {
+                    name: "Dance of the SugarPlum Fairy",
+                    singer: "Pyotr Ilyich Tchaikovsky",
+                    path: "./asset/music/Tchaikovsky  Dance of the SugarPlum Fairy  .mp3",
+                    image: "./asset/author/tchai.jpg"
+                },
+                {
+                    name: "Marche Slave",
+                    singer: "Pyotr Ilyich Tchaikovsky",
+                    path: "./asset/music/Tchaikovsky  Marche Slave.mp3",
+                    image: "./asset/author/tchai.jpg"
+                },
+                {
+                    name: "Sleeping Beauty Waltz",
+                    singer: "Pyotr Ilyich Tchaikovsky",
+                    path: "./asset/music/Tchaikovsky  Sleeping Beauty Waltz.mp3",
+                    image: "./asset/author/tchai.jpg"
+                },
+                {
+                    name: "Swan Lake Act II No 10",
+                    singer: "Pyotr Ilyich Tchaikovsky",
+                    path: "./asset/music/Tchaikovsky  Swan Lake Act II No 10.mp3",
+                    image: "./asset/author/tchai.jpg"
+                },
+                {
+                    name: "Swan Lake Waltz",
+                    singer: "Pyotr Ilyich Tchaikovsky",
+                    path: "./asset/music/Tchaikovsky  Swan Lake Waltz.mp3",
+                    image: "./asset/author/tchai.jpg"
+                },
+                {
+                    name: "Dance Of The Reed Pipes",
+                    singer: "Pyotr Ilyich Tchaikovsky",
+                    path: "./asset/music/Tchaikovsky  The Nutcracker  Dance Of The Reed Pipes.mp3",
+                    image: "./asset/author/tchai.jpg"
+                },
+                {
+                    name: "Marche",
+                    singer: "Pyotr Ilyich Tchaikovsky",
+                    path: "./asset/music/Tchaikovsky  The Nutcracker  Marche.mp3",
+                    image: "./asset/author/tchai.jpg"
+                },
+                
+                {
+                    name: "Valse Sentimentale",
+                    singer: "Pyotr Ilyich Tchaikovsky",
+                    path: "./asset/music/Tchaikovsky  Valse Sentimentale.mp3",
+                    image: "./asset/author/tchai.jpg"
+                },
+                {
+                    name: "Russian Dance Trepak",
+                    singer: "Pyotr Ilyich Tchaikovsky",
+                    path: "./asset/music/Tchaikovsky Nutcracker Suite  Russian Dance Trepak.mp3",
+                    image: "./asset/author/tchai.jpg"
+                },
+                {
+                    name: "O lago dos cisnes",
+                    singer: "Pyotr Ilyich Tchaikovsky",
+                    path: "./asset/music/Tchaikowski O lago dos cisnes.mp3",
+                    image: "./asset/author/tchai.jpg"
+                },
+
+            ],
+            setConfig: function (key, value) {
+                this.config[key] = value;
+                // (2/2) Uncomment the line below to use localStorage
+                // localStorage.setItem(PlAYER_STORAGE_KEY, JSON.stringify(this.config));
+            },
+            render: function () {
+                const htmls = this.songs.map((song, index) => {
+                    return `
+                        <div class="song ${index === this.currentIndex ? "active" : ""}" data-index="${index}">
+                            <div class="thumb" style="background-image: url('${song.image}')">
+                            </div>
+                            <div class="body">
+                                <h3 class="title">${song.name}</h3>
+                                <p class="author">${song.singer}</p>
+                            </div>
+                            <div class="option">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </div>
+                        </div>
+                    `
+                });
+                playlist.innerHTML = htmls.join("");
+            },
+            defineProperties: function () {
+                Object.defineProperty(this, 'currentSong', {
+                    get: function () {
+                        return this.songs[this.currentIndex]
+                    }
+                });
+            },
+            handleEvents: function () {
+                const _this = this
+                var cdWidth = cd.offsetWidth
+                //xử lý cd quay và dừng
+                var cdThumbAnimate = cdThumb.animate([
+                    { transform: 'rotate(360deg)' }
+                ], {
+                    duration: 10000, //10s
+                    iterations: Infinity
+                });
+
+                cdThumbAnimate.pause()
+
+                // xu ly phong to thu nho cd
+                document.onscroll = function () {
+                    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                    const newCdWidth = cdWidth - scrollTop;
+
+                    cd.style.width = newCdWidth > 0 ? newCdWidth + "px" : 0;
+                    cd.style.opacity = newCdWidth / cdWidth;
+                };
+                //click nut play
+                playBtn.onclick = function () {
+                    if (_this.isPlaying) {
+                        audio.pause()
+                    }
+                    else {
+                        audio.play()
+                    }
+                };
+                // khi bai hat duoc play
+                audio.onplay = function () {
+                    _this.isPlaying = true
+                    player.classList.add('playing')
+                    cdThumbAnimate.play()
+                };
+                // khi bai hat duoc pause
+                audio.onpause = function () {
+                    _this.isPlaying = false
+                    player.classList.remove('playing')
+                    cdThumbAnimate.pause()
+                };
+
+                //khi tien do bai hat thay doi
+                audio.ontimeupdate = function () {
+                    if (audio.duration) {
+                        var progressPercent = Math.floor((audio.currentTime / audio.duration) * 100)
+                        progress.value = progressPercent
+                    }
+                };
+                //khi bai hat duoc tua xong
+                progress.oninput = function (e) {
+                    var seekTime = (audio.duration / 100) * e.target.value
+                    audio.currentTime = seekTime
+                };
+                //Next song
+                nextBtn.onclick = function () {
+                    if (_this.isRandom) {
+                        _this.playRandomSong()
+                    }
+                    else {
+                        _this.nextSong()
+                    }
+                    cdThumbAnimate.cancel();
+                    audio.play()
+                    _this.render()
+                    _this.scrollToActiveSong()
+                };
+                //prev song
+                prevBtn.onclick = function () {
+                    if (_this.isRandom) {
+                        _this.playRandomSong()
+                    }
+                    else {
+                        _this.prevSong()
+                    }
+                    cdThumbAnimate.cancel();
+                    audio.play()
+                    _this.render()
+                    _this.scrollToActiveSong()
+                };
+                //click vào nút random song, đổi màu và random bài
+                randomBtn.onclick = function (e) {
+                    _this.isRandom = !_this.isRandom
+                    _this.setConfig("isRandom", _this.isRandom);
+                    randomBtn.classList.toggle('active', _this.isRandom)
+                };
+                //Lap lai bai hat hien tai
+                repeatBtn.onclick = function (e) {
+                    _this.isRepeat = !_this.isRepeat;
+                    _this.setConfig("isRepeat", _this.isRepeat);
+                    repeatBtn.classList.toggle('active', _this.isRepeat);
+                };
+                // phat bai tiep theo khi bai hien tai ket thuc
+                audio.onended = function () {
+                    if (_this.isRepeat) {
+                        audio.play();
+                    }
+                    else {
+                        nextBtn.click();
+                    }
+                };
+                //click vao playlist
+                playlist.onclick = function (e) {
+                    const songNode = e.target.closest(".song:not(.active)");
+                    if (songNode || e.target.closest('.option')) {
+                        if (songNode) {
+                            _this.currentIndex = Number(songNode.dataset.index)
+                            _this.loadCurrentSong()
+                            _this.render()
+                            audio.play()
+                        }
+
+                        //click vào option 
+                        if (e.target.closest('.option')) {
+
+                        }
+                    }
+                }
+            },
+            scrollToActiveSong: function () {
+                setTimeout(() => {
+                    $('.song.active').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'end',
+                    })
+                }, 150)
+            },
+            //xu ly khi nhan nut play          
+            loadCurrentSong: function () {
+                heading.textContent = this.currentSong.name;
+                cdThumb.style.backgroundImage = `url('${this.currentSong.image}')`;
+                audio.src = this.currentSong.path;
+            },
+            loadConfig: function () {
+                this.isRandom = this.config.isRandom;
+                this.isRepeat = this.config.isRepeat;
+            },
+            nextSong: function () {
+                this.currentIndex++
+                if (this.currentIndex >= this.songs.length) {
+                    this.currentIndex = 0
+                }
+                this.loadCurrentSong()
+            },
+            prevSong: function () {
+                this.currentIndex--
+                if (this.currentIndex < 0) {
+                    this.currentIndex = this.songs.length - 1
+                }
+                this.loadCurrentSong()
+            },
+            playRandomSong: function () {
+                let newIndex;
+                do {
+                    newIndex = Math.floor(Math.random() * this.songs.length);
+                } while (newIndex === this.currentIndex);
+                this.currentIndex = newIndex;
+                this.loadCurrentSong();
+            },
+            start: function () {
+                // Gán cấu hình từ config vào ứng dụng
+                // Assign configuration from config to application
+                this.loadConfig();
+                //dinh nghia thuoc tinh cho object
+                this.defineProperties()
+                //lang nghe xu li su kien
+                this.handleEvents()
+                // load bai hat dau tien vao ui
+                this.loadCurrentSong()
+                this.render()
+                // Hiển thị trạng thái ban đầu của button repeat & random
+                // Display the initial state of the repeat & random button
+
+            },
+
+        }
+        app.start()
+    </script>
+    <script>
+        //tiếng mưa chill
+        var rainIcon = $('.ambience .rain i')
+        var rainSound = $('#rain')
+        var thunderIcon = $('.ambience .thunder i')
+        var thunderSound = $('#thunder')
+        var windIcon = $('.ambience .wind i')
+        var windSound = $('#wind')
+        var fireIcon = $('.ambience .fire i')
+        var fireSound = $('#fire')
+        var nightIcon = $('.ambience .night i')
+        var nightSound = $('#night')
+        var forestIcon = $('.ambience .forest i')
+        var forestSound = $('#forest')
+        var trainIcon = $('.ambience .train i')
+        var trainSound = $('#train')
+        var planeIcon = $('.ambience .plane i')
+        var planeSound = $('#plane')
+        var heartIcon = $('#heart')
+        rainIcon.onclick = function () {
+            if (rainSound.paused) {
+                rainSound.play()
+                rainSound.currentTime = 0;
+                rainIcon.classList.remove('white')
+                rainIcon.classList.add('active')
+            }
+            else {
+                rainSound.pause()
+                rainIcon.classList.remove('active')
+                rainIcon.classList.add('white')
+            }
+        }
+        rainSound.onended = function () {
+            rainSound.currentTime = 0
+            rainSound.play()
+        }
+        thunderIcon.onclick = function () {
+            if (thunderSound.paused) {
+                thunderSound.play()
+                thunderSound.currentTime = 0;
+                thunderIcon.classList.remove('white')
+                thunderIcon.classList.add('active')
+            }
+            else {
+                thunderSound.pause()
+                thunderIcon.classList.remove('active')
+                thunderIcon.classList.add('white')
+            }
+
+        }
+        thunderSound.onended = function () {
+            thunderSound.currentTime = 0
+            thunderSound.play()
+        }
+        windIcon.onclick = function () {
+            if (windSound.paused) {
+                windSound.play()
+                windSound.currentTime = 0;
+                windIcon.classList.remove('white')
+                windIcon.classList.add('active')
+            }
+            else {
+                windSound.pause()
+                windIcon.classList.remove('active')
+                windIcon.classList.add('white')
+            }
+        }
+        windSound.onended = function () {
+            windSound.currentTime = 0
+            windSound.play()
+        }
+        fireIcon.onclick = function () {
+            if (fireSound.paused) {
+                fireSound.play()
+                fireSound.currentTime = 0;
+                fireIcon.classList.remove('white')
+                fireIcon.classList.add('active')
+            }
+            else {
+                fireSound.pause()
+                fireIcon.classList.remove('active')
+                fireIcon.classList.add('white')
+            }
+        }
+        fireSound.onended = function () {
+            fireSound.currentTime = 0
+            fireSound.play()
+        }
+        nightIcon.onclick = function () {
+            if (nightSound.paused) {
+                nightSound.play()
+                nightSound.currentTime = 0;
+                nightIcon.classList.remove('white')
+                nightIcon.classList.add('active')
+            }
+            else {
+                nightSound.pause()
+                nightIcon.classList.remove('active')
+                nightIcon.classList.add('white')
+            }
+        }
+        nightSound.onended = function () {
+            nightSound.currentTime = 0
+            nightSound.play()
+        }
+        forestIcon.onclick = function () {
+            if (forestSound.paused) {
+                forestSound.play()
+                forestSound.currentTime = 0;
+                forestIcon.classList.remove('white')
+                forestIcon.classList.add('active')
+            }
+            else {
+                forestSound.pause()
+                forestIcon.classList.remove('active')
+                forestIcon.classList.add('white')
+            }
+        }
+        forestSound.onended = function () {
+            forestSound.currentTime = 0
+            forestSound.play()
+        }
+        trainIcon.onclick = function () {
+            if (trainSound.paused) {
+                trainSound.play()
+                trainSound.currentTime = 0;
+                trainIcon.classList.remove('white')
+                trainIcon.classList.add('active')
+            }
+            else {
+                trainSound.pause()
+                trainIcon.classList.remove('active')
+                trainIcon.classList.add('white')
+            }
+        }
+        trainSound.onended = function () {
+            trainSound.currentTime = 0
+            trainSound.play()
+        }
+        planeIcon.onclick = function () {
+            if (planeSound.paused) {
+                planeSound.play()
+                planeSound.currentTime = 0;
+                planeIcon.classList.remove('white')
+                planeIcon.classList.add('active')
+            }
+            else {
+                planeSound.pause()
+                planeIcon.classList.remove('active')
+                planeIcon.classList.add('white')
+            }
+        }
+        planeSound.onended = function () {
+            planeSound.currentTime = 0
+            planeSound.play()
+        }
+        heartIcon.onclick = function () {
+            if (heartIcon.classList.contains('active')) {
+                heartIcon.classList.remove('active')
+            }
+            else {
+                heartIcon.classList.add('active')
+                alert('Long chưa phát triển đến đây đâu, chịu khó đợi xíu hehe')
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
