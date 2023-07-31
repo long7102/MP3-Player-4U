@@ -123,6 +123,7 @@
     margin-top: 36px;
   }
   .video-background {
+    z-index: -7;
     position: absolute;
     top: 0;
     left: 0;
