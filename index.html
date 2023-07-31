@@ -13,8 +13,12 @@
 </head>
 
 <body>
+    <div class="volume">
+        <i class="fa-solid fa-volume-high" id="muted"></i>
+    </div>
     <div class="main">
-        <video poster="./asset/296177730_172477061934174_1359433803686400334_n.jpg" autoplay loop muted class="video-background">
+        
+        <video poster="./asset/296177730_172477061934174_1359433803686400334_n.jpg" autoplay loop class="video-background">
             <source
                 src="./Anime Aesthetic 4K.mp4">
             <!-- Thêm các phần tử <source> bổ sung cho các định dạng video khác nhau -->
@@ -43,14 +47,34 @@
 
   if (username === "hanh" && password === "2003") {
     // Chuyển sang trang tiếp theo
-    alert("Đăng nhập thành công! Đang chuyển hướng đến trang tiếp theo...");
+    alert("Đúng người rồi hehe, chuẩn bị đến cái tiếp theo rồi");
     window.location.href = "./main.html";
   } else {
     // Hiển thị thông báo lỗi và yêu cầu nhập lại
-    alert("Sai thông tin rồi :(");
+    alert("Sai thông tin rồi :( Bạn có phải người được chọn thật hông");
     const errorMessage = document.getElementById("errorMessage");
     errorMessage.style.display = "block";
   }
+}
+const video = document.querySelector('.video-background')
+const muted = document.getElementById('muted')
+video.controls = false
+muted.onclick = function() {
+    if(video.muted){
+        video.muted = false
+        muted.classList.remove('fa-volume-xmark')
+        muted.classList.add('fa-volume-high')
+    }
+    else{
+        video.muted = true
+        
+        muted.classList.remove('fa-volume-high')
+        muted.classList.add('fa-volume-xmark')
+    }
+}
+video.ended = function() {
+    video.currentime = 0
+    video.play()
 }
 </script>
 
