@@ -29,9 +29,10 @@
   .form {
     backdrop-filter: blur(3px);
     z-index: 7;
-    width: 400px;
-    min-height: 170px;
-    padding: 32px 24px;
+    width: 500px;
+    height: 350px;
+    min-height: 270px;
+    padding: 32px 27px;
     text-align: center;
     background-color: rgba(231, 215, 215, 0);
     border-radius: 7px;
@@ -127,6 +128,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: none; /* Điều này đảm bảo video che phủ toàn bộ container */
+    object-fit: cover; /* Điều này đảm bảo video che phủ toàn bộ container */
     overflow: hidden;
   }  

@@ -36,7 +36,7 @@
                 <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
                 <span class="form-message"></span>
             </div>
-            <button class="form-submit" type="button" onclick="validateForm()">Đăng nhập</button>
+            <button class="form-submit" type="button" onclick="validateForm()">Tiến tới bất ngờ nào</button>
         </form>
     </div>
 </body>
@@ -47,11 +47,11 @@
 
   if (username === "hanh" && password === "2003") {
     // Chuyển sang trang tiếp theo
-    alert("Đúng người rồi hehe, chuẩn bị đến cái tiếp theo rồi");
+    alert("Đúng người rồi hehe, chuẩn bị đến với bất ngờ tiếp theo nè");
     window.location.href = "./main.html";
   } else {
     // Hiển thị thông báo lỗi và yêu cầu nhập lại
-    alert("Sai thông tin rồi :( Bạn có phải người được chọn thật hông");
+    alert("Sai rồi :( Bạn có phải người được chọn thật hông");
     const errorMessage = document.getElementById("errorMessage");
     errorMessage.style.display = "block";
   }
