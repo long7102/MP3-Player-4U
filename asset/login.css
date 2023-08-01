@@ -17,6 +17,7 @@
   }
   .volume i{
     font-size: 40px;
+    margin-bottom: 25px;
     cursor: pointer;
   }
   .main {
@@ -27,6 +28,7 @@
     
   }
   .form {
+    display: block;
     backdrop-filter: blur(3px);
     z-index: 7;
     width: 500px;
@@ -40,6 +42,15 @@
     align-self: center;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.75);
     border: 1.5px solid rgb(109 75 75);
+    animation: start ease-in .7s;
+  }
+  @keyframes start {
+    0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
   }
   .form .heading {
     font-size: 2rem;

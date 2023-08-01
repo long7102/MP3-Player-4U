@@ -16,6 +16,8 @@
 <body>
     <div class="volume">
         <i class="fa-solid fa-volume-high" id="muted"></i>
+        <br>
+        <i class="fa-solid fa-eye" id="display"></i>
     </div>
     <div class="main">
         
@@ -76,6 +78,20 @@ muted.onclick = function() {
 video.ended = function() {
     video.currentime = 0
     video.play()
+}
+const display = document.querySelector('#display')
+const form = document.querySelector('.form')
+display.onclick = function(){
+    if(form.style.display == 'block'){
+        display.classList.remove('fa-eye')
+        display.classList.add('fa-eye-slash')
+        form.style.display = 'none'
+    }
+    else{
+        display.classList.remove('fa-eye-slash')
+        display.classList.add('fa-eye')
+        form.style.display = 'block'
+    }
 }
 </script>
 

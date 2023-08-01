@@ -17,17 +17,27 @@ body::-webkit-scrollbar {
 }
 
 
-body {
-  background-color: #f5f5f5;
-  background-image: url('./image/Renaissance_Colour_800x800_4ee4dcfc-cfff-41d3-a144-71654f6e3a17.jpg');
-  background-repeat: repeat;
+body {  
+  background-image: url('./image//Renaissance_Colour_800x800_4ee4dcfc-cfff-41d3-a144-71654f6e3a17.jpg');
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
   scroll-behavior: smooth;
   scrollbar-color: #888 transparent;
   /* thumb color, track color */
   scrollbar-width: thin;
-
 }
-
+.wallpaper{ 
+  position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 html {
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;

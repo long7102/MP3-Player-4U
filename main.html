@@ -20,99 +20,100 @@
 </head>
 
 <body>
-    <div class="ambience">
-        <div class="rain" style="margin-bottom: 25px;">
-            <i class="fa fa-cloud-rain white"></i>
-            <audio src="./asset/Ambience/rain sound.mp3" id="rain"></audio>
+    <div class="wallpaper">
+        <div class="ambience">
+            <div class="rain" style="margin-bottom: 25px;">
+                <i class="fa fa-cloud-rain white"></i>
+                <audio src="./asset/Ambience/rain sound.mp3" id="rain"></audio>
+            </div>
+            <div class="thunder" style="margin-bottom: 25px;">
+                <i class="fa-solid fa-cloud-bolt white"></i>
+                <audio src="./asset/Ambience/thunder.mp3" id="thunder"></audio>
+            </div>
+            <div class="wind" style="margin-bottom: 25px;">
+                <i class="fa-solid fa-wind white"></i>
+                <audio src="./asset/Ambience/wind.mp3" id="wind"></audio>
+            </div>
+            <div class="fire" style="margin-bottom: 25px;">
+                <i class="fa fa-fire white"></i>
+                <audio src="./asset//Ambience/Fireplace Sounds.mp3" id="fire"></audio>
+            </div>
+            <div class="night" style="margin-bottom: 25px;">
+                <i class="fa-solid fa-moon white"></i>
+                <audio src="/asset/Ambience/night.mp3" id="night"></audio>
+            </div>
+            <div class="forest" style="margin-bottom: 25px;">
+                <i class="fa-solid fa-tree white"></i>
+                <audio src="./asset/Ambience/forest.mp3" id="forest"></audio>
+            </div>
+            <div class="train" style="margin-bottom: 25px;">
+                <i class="fa-solid fa-train white"></i>
+                <audio src="./asset/Ambience/train.mp3" id="train"></audio>
+            </div>
+            <div class="plane" style="margin-bottom: 25px;">
+                <i class="fa-solid fa-plane white"></i>
+                <audio src="./asset/Ambience/plane.mp3" id="plane"></audio>
+            </div>
         </div>
-        <div class="thunder" style="margin-bottom: 25px;">
-            <i class="fa-solid fa-cloud-bolt white"></i>
-            <audio src="./asset/Ambience/thunder.mp3" id="thunder"></audio>
-        </div>
-        <div class="wind" style="margin-bottom: 25px;">
-            <i class="fa-solid fa-wind white"></i>
-            <audio src="./asset/Ambience/wind.mp3" id="wind"></audio>
-        </div>
-        <div class="fire" style="margin-bottom: 25px;">
-            <i class="fa fa-fire white"></i>
-            <audio src="./asset//Ambience/Fireplace Sounds.mp3" id="fire"></audio>
-        </div>
-        <div class="night" style="margin-bottom: 25px;">
-            <i class="fa-solid fa-moon white"></i>
-            <audio src="/asset/Ambience/night.mp3" id="night"></audio>
-        </div>
-        <div class="forest" style="margin-bottom: 25px;">
-            <i class="fa-solid fa-tree white"></i>
-            <audio src="./asset/Ambience/forest.mp3" id="forest"></audio>
-        </div>
-        <div class="train" style="margin-bottom: 25px;">
-            <i class="fa-solid fa-train white"></i>
-            <audio src="./asset/Ambience/train.mp3" id="train"></audio>
-        </div>
-        <div class="plane" style="margin-bottom: 25px;">
-            <i class="fa-solid fa-plane white"></i>
-            <audio src="./asset/Ambience/plane.mp3" id="plane"></audio>
-        </div>
-    </div>
-    <div class="player-container" >
-    <div class="player">
-        <!-- Dashboard -->
-        <div class="dashboard">
-            <div class="video-container">
-                <video autoplay muted loop id="video-background"
-                    poster="./asset/296177730_172477061934174_1359433803686400334_n.jpg">
-                    <source src="./just the rain clips.-(1080p).mp4"
-                        type="video/mp4">
-                    <!-- Thêm các phần tử <source> bổ sung cho các định dạng video khác nhau -->
-                </video>
-                <div class="content">
-                    <!-- Header -->
-                    <header>
-                        <h4>Now playing:</h4>
-                        <h2>Long đẹp trai quá đi mất</h2>
-                    </header>
-                    <div class="heart">
-                        <i class="fa-solid fa-heart white" id="heart"></i>
-                    </div>
-                    <!-- CD -->
-                    <div class="cd">
-                        <div class="cd-thumb">
-                        </div>
-                    </div>
+        <div class="player-container">
+            <div class="player">
+                <!-- Dashboard -->
+                <div class="dashboard">
+                    <div class="video-container">
+                        <video autoplay muted loop id="video-background"
+                            poster="./asset/image/wallpaper(1).jpg">
+                            <source src="./just the rain clips.-(1080p).mp4" type="video/mp4">
+                            <!-- Thêm các phần tử <source> bổ sung cho các định dạng video khác nhau -->
+                        </video>
+                        <div class="content">
+                            <!-- Header -->
+                            <header>
+                                <h4>Now playing:</h4>
+                                <h2>Long đẹp trai quá đi mất</h2>
+                            </header>
+                            <div class="heart">
+                                <i class="fa-solid fa-heart white" id="heart"></i>
+                            </div>
+                            <!-- CD -->
+                            <div class="cd">
+                                <div class="cd-thumb">
+                                </div>
+                            </div>
 
-                    <!-- Control -->
-                    <div class="control">
-                        <div class="btn btn-repeat">
-                            <i class="fas fa-redo"></i>
-                        </div>
-                        <div class="btn btn-prev">
-                            <i class="fas fa-step-backward"></i>
-                        </div>
-                        <div class="btn btn-toggle-play">
-                            <i class="fas fa-pause icon-pause"></i>
-                            <i class="fas fa-play icon-play"></i>
-                        </div>
-                        <div class="btn btn-next">
-                            <i class="fas fa-step-forward"></i>
-                        </div>
-                        <div class="btn btn-random">
-                            <i class="fas fa-random"></i>
+                            <!-- Control -->
+                            <div class="control">
+                                <div class="btn btn-repeat">
+                                    <i class="fas fa-redo"></i>
+                                </div>
+                                <div class="btn btn-prev">
+                                    <i class="fas fa-step-backward"></i>
+                                </div>
+                                <div class="btn btn-toggle-play">
+                                    <i class="fas fa-pause icon-pause"></i>
+                                    <i class="fas fa-play icon-play"></i>
+                                </div>
+                                <div class="btn btn-next">
+                                    <i class="fas fa-step-forward"></i>
+                                </div>
+                                <div class="btn btn-random">
+                                    <i class="fas fa-random"></i>
+                                </div>
+                            </div>
+
+                            <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+
+                            <audio id="audio" src=""></audio>
                         </div>
                     </div>
-
-                    <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
-
-                    <audio id="audio" src=""></audio>
+                </div>
+            </div>
+            <!-- Playlist -->
+            <div class="scroll">
+                <div class="playlist">
                 </div>
             </div>
         </div>
     </div>
-    <!-- Playlist -->
-    <div class="scroll">
-    <div class="playlist">
-    </div>
-</div>
-</div>
     <script>
         const PlAYER_STORAGE_KEY = "Long_PLAYER";
         const $ = document.querySelector.bind(document);
@@ -475,7 +476,7 @@
                     path: "./asset/music/Tchaikovsky  The Nutcracker  Marche.mp3",
                     image: "./asset/author/tchai.jpg"
                 },
-                
+
                 {
                     name: "Valse Sentimentale",
                     singer: "Pyotr Ilyich Tchaikovsky",
@@ -872,6 +873,27 @@
         }
 
 
+    </script>
+    <script>
+        const backgroundUrl = [
+            'https://lh3.googleusercontent.com/pw/AIL4fc84F7FXyYNq9B6KfcRbbtwK3w7m-RcJeFzC6SPG6ywNyp1dLySfzW3SXJino4Gq-zguIqHG-iZCpO-TSpVBR5jl-k8Nb1DdQSpM3u08yXM_qcXV7F513ALvqGXr7Gp-mhaZyGTdvXnurTyLZ2RJXMQLqnP1Atk3gkMkC36wODZAtuWVg1XWgHmgQBxXgjsv_Y44VCB_Xf4Dud5PphMsHN-_rdueajSLLqC2KtEgyWINhTQq6EtQttd-WsMb4ws2MTPrdq7bKlTPqjq3nWztXDyQV0B161dmJcP6eqUx8X2k6aoNn-b91tuMiCLIG5d-_5ijSdWvGplr4IAXFNaDyfh-goFX27SqARzoCqdnpB2jYVHlI6EE2xYiHC34-8IKKazQkK96Eu8kh5SteJ9mu1qexgM5DPpc4BDsjt89v-gfthMg46ntVFqi4lKSInR-La7BZaHU7CoQqgzt_kZIUaXmiqu74hCORgI6Hon_MwC3R2X1iv4AmyY6Fur_6Yk35VXzNALB7m1nYQOOd6Bf4_YF45VEUW0eLRJaWNpmJjDLyh6L7q_KptNPj7ZSUZDU4r3V7Yipv3rEG8UvrE8Vgv2zjPTxrsyc8wT1trFjVGCbSyU_zdzf2ubOOI6h6AFi7ZVCtNzatvW_RZAKXR3xM78WQTmNnH8zttAEb3ISkjFqn8m2MTeE8A9Xr0KWp00RG7sfaeNZJEBIrU_pi9WtlZlKGC6OXrm2OQiQsBCvm3duS_T6ED_vW2-lQbKRfEsviKyP0ExR8vRklhm4Q1JzfpRsdiBFhQm-dqireShcXsoNJmr3rLdvXaymiAomW-IQoZ-O2gsCOpnsfvjEhfobZTPB9Srw67XstfRBQCN-uehAzU1zxrnSEvuiKSD1myfEbXrztIronA68ZOMvfY75xSo7ow=w1645-h925-s-k-no?authuser=0',
+            'https://lh3.googleusercontent.com/pw/AIL4fc9Snh8pX2zLEaBfZLyMP9D54lFimUQKbaRe8dmplo4564fQmHAK9feF5IQdnH37BuL1RoSlFX51yLoQS1THqiEsp2Z5L2eKKCNLIlOv3QbQgLn2hxAsVuD88Ydc5CcukOB3GKt0PV54P7wfY5p6--RIk1OcXbdM3LQGegUDG3xaMRNBvSpH1xN0LgNCuUPrUOIwlDLKyBaYquiLIEMKBUxpYoB71eSQBj167JvfZbWpy3XU8lvsFeDrDT3R-1zun_d1YHFYSklS1S-Cx5bHFdWpjKQEteNBF1xo0lZ4Z2M-j60E-IXZmm31ilaKUxQpx6fgBkDPqupoqnLdlchJ0vid4mv6Lq713YPjyqeXXHnGQRRSMYAGTML_9X721Gbne08x_sWU2jM55y5ACM7EwUQcgWOedX3zxHVpqP9lNkTkKQp5lOw3oW2TjpCj6ppQ9oH6SiL3koo7B8DbIMya3ovkOaW-9-Tl7d9iLYX-mtgaSP24GmUA1QLXTChY4m597Gl6gSb6GqH9OSjE8DuFzwszOMLPICo9YWZuyOXXMdJ6QRygACxcFnah_oCT_6p0vu_-QtfARWrlhcXof298ho-oJzDHeeL14T0Bn0Q-hOr8G7Se6M3LYuMNKRTetiC1c6qUUz-YjRSTUxZ586gW1EKc3c9twXj5wx_j-vJsZ4LZFqac5gdUJle3a0pkfebmUnsn3fIMw72tGY39SKr5HzithvJBE7u1IQVQ7MDE1cuw4KP3ptgTF3WNaYZwTpaan7EM56gn6kQb5RXyYa5o77aNlWjtT_moUgim4UvxtIe8ArZq7-kYnsM6rUtfu-p2_yBoSlkrW-XNyr4qMWkmOsyKVGTvKMv6qgYjK_vN43HVN2umt97jn43yeqrRh3B_Ddxinp4fsjLFdXY_r--o7NQ9iQ=w1651-h925-s-no?authuser=0',
+            'https://lh3.googleusercontent.com/pw/AIL4fc_uiXQgKniqaHh6HkEJftyzLRBSexTKuO8OgPuS9G9E3liOFQK95KJJYtUUrjnkLd-ttB70aZe7ejfa3og1wYcvXR4HJHRMasmsTA7cJJAcTRYWaUJthx9eM1qk7PaG8qzGlINZiwJCfVKEooEQhbJrBVu1fjcoWmzV9dEZYjG9H7KzeOXAgzFCRTMe1mT6ONJSayJd3JoKlek6-cjYg8SSI-LhkAnyR9ygfRGQMTbBbWs7CqliTVDiODhb3aupr29x1nl-tEhtiI5e_SvnvX8EDl50NFcGl3UEavBECMtSMoaK43APxQLIE5ylpCFNWcGaVmj20Zr0mV_6vIFyXH7i5kZYOUyTb7lyb3StDBYclq8fIYViEMDrDGhWKMR_0T1o2989DUjv5VS8o4JhFnJ_jaMUp990s5jMUzKXWnQHt4sG1CNz1D0ySZZl8Vo8GZBE1j2iFwdWBQMrlqQxWLFX620-4j2HALd1PQ8fxXExVab30oEpTlDqjJEFTcT25MAEHa7HZlO2SNKeIyOUuz1CmnTqHDQ43nW1E5IcEfmBcDqZA07CmwbSknbaQSBXqWI3FI46zosWImcD4rHCE3MWhdl1zVCfy4xReS94i5ct3_0GV8IIOxQzAn20XVuqAvhRS3GBCDg-DbHzvczMbfDiJ7gCoeooD-Ttc9igcIhZSg0co2ru93gw-ETDz6RimMtwg7qRwpQZkk6w846R-8QWw6fZD1Je_eW7ABL65Tdy1m8775ZS61nwmg4uI9w7x-hA3SHHRH-4tU7-qMZTwC3WVXPsYvoSX96rDDSGqKTF8lxri65sQm-tiq7-l5MCRE62VtUFnrmP9m2GJwuwM5kO29oenPLxmYAQdGl_UIxpUrxpFIILP-YKiKrh-rwjsKwRWYbhpjsy4dL7x9lhRwUrWw=w445-h251-no?authuser=0',
+            'https://lh3.googleusercontent.com/pw/AIL4fc-PaIOcdMF2H987RSbL8LIZN1jiSgl7VVXZU8Q3upHNbaEJPHj-lcvultseNpumMggJ5ofY7C794vhkDnJcw6QxaGOYBUhwIIvrPOpGIsX_GKmt7X3U44tNWeUWI7ostnElZt_a8imVxeF6RaIfq38XxmKBMArholUJV07tSouTxoSJa-vaNIGpB9Zenaqil3U3ArobA71NKkkFMjdgrygKwLxrU8ceazRP-JKoOdfeMh8qh1bTFmquSTGZQFTyovD3GPszRD_od2gjLviOW9eO9V8THn6aE8plRnedv1VHBOYSgQi9CaGKG4ywYDwcsLvCJYxk0H0oLoA5ScnPYKKMQ_60gUHTNVG5fBqe88_FYN4joOru9u9MRSfbdjadR040Zn6iUKDTU5J1mCf7gRVm2UdPfHrEiuUKpOxDGJ1Vys3_x0mCw6odVADduWpXrm2Tq22Burpvr9EgwMvuP5UyhVXqkHUwc19tJsp8dVrWXR7jr11pTJGomhv_VBvWl9OwWdPWBo5_1UK5Za66Z6Ujdvtbi9Ew1aB4VLwEOXwtOTYASrUEsGKW35AUkpSW_wmURU9cekRAJqu68oFZggq6xNZuAZI5IBxjyWXQuUw9JWir0POcMlmpX12ZLxYVgepGniGcHeLJJxUIqyWD4a_n2-KxVBnykERlDAYTHiC_G6fAqGwtVqSyLWaboQkjszsetQYUwTjFbsicljyovKiE96EjCXsNMuECheAgXcuvsobazepNHRjZtnlKEY-Lr37BIxn9123fVfO8YEE7hkP3hUzHk-z5FVG8NkEzYB1AOgqBzfF6c4rpWUrV12zf_JD2ndgenxQBKO-yD9KE0auRsyU4kUiFcgdzKYWEQ2yCGR2t2tPU2MTU-XLx_jJWi0VjLiDDBBqk_lfSEHygBkOm2A=w1763-h925-s-no?authuser=0',
+            'https://lh3.googleusercontent.com/pw/AIL4fc99jRa6bcAjX5jHT0OaAiD1kwNeP_l_Jpy5DuyAXM4AAVggCGi4zyZ7Vj1O32PaGiMqU-i8ZMSIFqM7SrXmoeqCVHZgcTqwLEo6B7Dga6rvunBCGmjsnR3C4PldjBAJWlLlcLiEZuCJLZBAhyXY8fRgfbaYQhRMPkLnuO_tpNpggQJ_iBLSqKuv3I3gnruUm2LM9aIT5EvEol0DL5D1gF7XvLEmccOaM9JQFRRysBJxGzkR7Zx9kNrH_J0Gi2vlqRPXIpox_LF4mMIkxHSmY2yBY9A2atw2poUizkBHGKNHuqvXizf0wFnh2PRNnbJZQHi68B9qG3Powr1kSp6KeMnC6dMh4ysbQvaeD5SqpQCJCf2k5dv5gMi6nuMRoadMMMGQqE_-Qw_wJvEHUKuC3DJhay5s_0-uqlAhLksTJ7nDONnKXn1DREdUtldtSqYaWKbjcxMz_zdn8XPMKNIOmJle_DkdAoRvcccCAtXWITauWW2ZWv62gujT1ZaZLwOui0UNod_ewFzaCGPDHhdBK3hI6A6-Ackf7d57P7Bt_JiyKV6g31z6S4Miku9u4a0IPZj7_TylzLtYQUp90DWBlGNG3ivPTb5JZkUyaKnbUShD3cqMQ6XlcsLrmMTtwdrljpCgPW4oxk09n7r7tRAnJEy7v31O38KIvHdm2R9s6lxBRPmUG5aygh3HCNSKY4F_RlE-BuuXOBifgKR5L2iLImnC6ZC3bU-AgRZMsIfSQslV7VOa6LEhAhPsRVcp42M6OEQn0DzwGOHxHccPQOi0G_8qKw8WBGuTnxT66wS87r3ETkBlZpkQevEg_Rq_2i1LOSZFP51LtqIycyUehOsliq2Mbc_3S_UokRaJegU8g39CMs3I_o7T9j-8X1xQ6EwSh4Bw5QYuXneBN3j7qCPgrQdM5g=w1481-h925-s-no?authuser=0',
+            'https://lh3.googleusercontent.com/pw/AIL4fc95pcn-_QiD8hX3XILjFYN2gIjs2HwzWe9HKVyajEDPy98r72rxw1Njlzawz2PZbbPpxokq0qIKXdndhh-8vL_1LyRvUkQM3V5pK_S9M4qPc1wMAvy_MHYCfvlucCmhqTn8nvPMGXDs5VCfP5cd7tiWBvCTUais2uTCLPIOPE6YPqOPaNt3ywPXUpmCF3aUrENX5gEgd6jTlArInutkN3XzSXINTwBdQWC_y2fZMYrMUkLCCEO6TSfDjD8drK2mRym-buTZIooGtY8e09DnO6Ov5sGlG5uC3ZO3saX6aoRn-5vZWwYCm1EMzfF9V4lyhtEMPy4Zsg_8fxiMptk9BOouOkzI9wsLf_fdK-fArWPY8Ln0zMWiD1NkhLOuhYkdlenPmnS3Cn7KIYpV8Mjd2DZ34BE_yQ9Godi0BS7TshSwbYbX-X3848qYTS_6gUMPcmCE3PciTpCTyjc1NoosPydFjZo4LjChIE1QYDQtzcM1UZAuUAnThLfeZUmdJQh-e7HtSSiDlJAfd11NBgGE3PTN-5inBdZC6NIR4nFQoOCkB3-e_JTFmmK-pBbU2_EK9ewQdbPjAjSE8dovjfGhwBdGWmB2MGb1oDgotvja4L3FmOrudG_ZoxFpO2DJshZyYedaJhogKWyNjthcRX4A6tG9zI2X5iQKqMMHB2s9WJTDHhJvbUDtBTroRVj6V9Ip9XsV1_iLculNCJPo3RP4bXOblsTh1gP9ckWUN641bhWpgH0GFGdbu5eFbRUod8jPuYGM_ijBva4RzpPdcphnIJQ93oJYmJFjqHboYYIHhbCWHO49XckPM4XMM2lL7m5Vns9etiX5oAhmjW7zTEaySGZzg1UlKkvTELzHB86RR7rL3OKa7b5xSmx5avJgz0bSD9aPbLMMQhN0KzzpqDUl90hj_w=w1697-h925-s-no?authuser=0',
+            'https://lh3.googleusercontent.com/pw/AIL4fc8Kps9EbIbvZT2sM2TQxiQx1XZRUYkC7xLbfJvYCwUiJmgk1XZpnYSp8UCrz7Vyj1e5Ldqi_qANXTkxuYTZJup0IQxmII9c3SvsEdX3vAWyl5FSp5mmyO6NocFHziHR3C3-FEFEk_GLEfgcu-8fVh_h9OgsSSPNYmdFwn-6UGXWh7sQ0zSdpJUdhLVYQslfnrGzDf30NhYr2YzM74qmZpdlbEQLtLkQkSrZTdHQd8A9VvINIpcdFG0kv7dy-j2jbUQEvsLlKpg3U3QuCgYSuQHEj0SrnZKMgcOWdSFe03fWLGODiQgKezWhj6Ro-Vo82NP_scp3mkZyXS7KmiftNt8ZZFlbdKlB_Am59YpTsVERdbr-b0xMWHNkXNrWW2w25KMA3_Rg3H3rj4Cp3n27mt6pdXkGXazSJzoYGQJpoK2NIEQA5yYli042ahvwu0ho-cs5jQJDL5ZM69WliQ8bGMVc2WokvNKcameBVl4GVSiU5zgiNxkjeT7JZ9zGfNODG68EY8rdsiwkXS0ZcbVoyGhYEeJUqapHwdcbTIji2p4vp8iYR_DQP1qIzm99kFj_b18GFD14J_a9oWxw3TWafFLmNoTQZDo5ihe3qKn2thwDLLyMEl45EXCym0iZIXSXwOS_JhNOjruR41X4ZW1os64aTxVj4yjPsSMrS9HievSTUo-8bBuGJQruiKKqHEHszRVpxcrbDTWT_ZgistlZkDH9Ng26MyIy73BXZFvrz4iHGX3sEdtVBhPx-p83GpWpXx1cgTxcPeJusjY0vbFN4uSKx8nCqzebVsefDECTfgUwmKXOqABl2K2E7h6afc6FAQBhnS8QFTrXB6JurCxq8pmhggB6f_DR9MN5GLc18Tf8PXKEUTZlIuJsmNBJ3kXAPLqgNecSLb9t7KTX0vrKNphHjA=w1645-h925-s-no?authuser=0',
+            'https://lh3.googleusercontent.com/pw/AIL4fc8qv6Nh-ewL85qaTH43xOzP8AKBZLibjSLqGfJGnPaGdi37fBKsNK73bSe8ds-ylM4Pd7gzfn5Y-sbu5Wf2LAP_EXLEvvZGPhmyvB_1x6MSURgEMJehE1opCBK4v_rfNI7uD-dKK6lg9rfCw3NUgznHI8zvOpq13wbqlF6LLYZ39qzs0ErZWlhlcsEgoVdPhE2Qdf8xpQOIs3yEWgPIXO2l9j7zmPA_9iqjKDIRjc9WtHahOZ0cAkrde0mM-W3yVQQLNZ5WVy71-spn-g_IMjihg7KRiyObpK5ocpObDpv9Tk7hs_NFgjvA_bwU5plTI1QqEXrTXIJVoNVvaCIuHRfAm5LPPQrdcmk0VX6isE1ckXMOcH4R3UlMAQ5QpuFn40J-BVze2J7kK_2mPCJQKd7bUcfrfFsoji7bv9Eab6HvijhmaTV7bi0yrNzsszbRMfny1v6VGwwD6lHClLbayq2YQmL9w9d_YvHSirYMsrjRHLvn8VF73rTBWdfHRv58reVUg2cAdCjcMs7W4vwmuJKCT57-771wcPBERDiNBpzxghV9hSo8ASoPq--dnwjmtkXyYaNPNPT8KEtrQXugokGUKs4TNJwKDiSHr0k99Jp2w5Qj7tiIY9LxG8y13rtDwiziQGyQbYPWSq4Wms7dwUCCxVDwt84TCrOSYgFYxPk9lttfLiBO-cjZGZpeZj601-7kyHXfkZEcK7ysoH1E0z9va4a33A7M4Dv4bIClaokTZHA0ln_u0T-onbz8j_3wU3El1oybWg4CqLLVJdyBA3cZlF5wFngoL7_H3Whbk-9neuoSBR4szb7fhAt1oaM42kR2o2VO2Mc34TQJbMhMhWdIpNYyJxBIo_KIuQKulKdp5M_zSakQK-tMRmbUNdIRyKaLeH29E0dWOxXA3Hx6dcJGjA=w1645-h925-s-no?authuser=0',
+            'https://lh3.googleusercontent.com/pw/AIL4fc8yjPtFZU1wYAKGqwv-TEYulwh9NJByRHpTePPijOeQ5hA4_TIM9Xhw-tGRvzBBP8K_t3aS_vsC0WDEu28W6U1M6KRUZ3Kt4Qag7TkWABF71zBtUtSOzmiL-xx8VjcRs65lcU2Qk6Ntj9tRU-8YtS9m8oaQgQO2bJRhvvRRHR14h1_PiwrS6fNSnBnUlXeALE4lbdGk2LYfizp9EW0nadZRWU97Fb-jGYqZJPgjeRNv6YnJHIEyUBN60tE9PyaXl2jbrIF8Cy-AlnnBG5JngGhBRRyq2wmQijoVydT3QLjxzs1p21mUFPinvk4NuLIDpoGlsI3ldDMh5yf8ZTn7nDi3vLbPffvA_pvVfPk4bUSVB0P9z1ONLsR9D99l2yoIIkzJeOJMyxTGOwwKSL_KJXP3jI0KxDcUCEEyJ649Rf3x2toGiXCmK7eZ8QRUpMHnjhXTkoG8BV21st2djndivzRefXHv8xkC_CEmMPWn2QBRMIQSvFLgk1w9nKuqJAyaV3ZegOeXXJS6zDqW44ArywPTbmphvvBTjL2JXKnE4mooAwQ118wC4T6sCLwEFa3QHMBh6mOVsjT2zCgC5LHSGcIzZqF_5lmJlyyfUGgtTk1l8kbeHbAoArkW414-NiSAFykmLIwgFgT0Dr_kT5DkynygjyvlwZeWu6dGi9X4wkgNmAjhslN2Ce7-WIs4grjvOckpwOrBDwJdemKyBr3-iEvHnO5hOUPIIsPgm2NsUBsW2aSdYh1CyfLd2n1xv389qLMY-UlqWkeq1FQ6a_x4m2bQPAFviSNZ6kNAWqNbP1KTOPHltSflX-ZVwqXv24luaEWV7fzWG0ZnjXNS_BJsXZk5R-ayljrMbXp5n5Rkg8uh-3ToeaK2INUaujNZbwflAjUvjn5oYV_lsc-SjyEZOG5BbA=w1645-h925-s-no?authuser=0',
+            'https://lh3.googleusercontent.com/pw/AIL4fc82YMzP8tlYfjJbxWCiHKCUuaV_S0z5JUwrmvkOe4oYNij9Qf9hLcBk_i6rSlxn8GL1REy-Gu3iYo_RYlAN3NLNCs8AxX9JEYP3cMtl7PwKjtnTwm-5skR5JguoOYBKSc95-BU7seaPs8mpsSauugTaKx99E5Lg9px4VQ6wr7Cc40-JsZpuDyP38zpRdfxYdZmV8g3EKmxcKHkhmAKwZPxRMtLfQ8abqKe8BPlDVVOqW1wBqkPsfu_NKmBLgq3No9Ns05tcPQCHOiSqNW1A0OEZMYVvSJkOwQZAfrnqI-rjxxIIq-Ux9dRWRQBIUKjHjsOoGrDODebJZNimleRO1f2axLIg7GUQckpJQADW0n_PL7qigfPEBAztWBpd-igWQnXGcnHObC4ePQimQDmJbWXFfAhaxkzoTH0tGoU0l3EqwU70XNKJDGrlnOggpS8GD2zhn_ApxHBmwRudchMPDKm4olNooc3atPs9QXrek5vB5Z1_9gSjduPyXhkeclj2ts2xzK1X5ZTyK2zHMgl9DCD4VaF2Gh0JxPiATR6EWWgXtJQctQKZM_GjdaRaV8LwMyzFqb0q4LBqbRR_lDGkVhyqy5uAHx70roeZKqxY08v66NcKfBr7s-rlmEUURAjkyNrQ_ULSHYh-_mDIxImGAurIVBwYUj01lIX-XELnM9U_PmrWsjlQdQ6rw8QLLt1FUs2YMGJ6MYUktbcA2RXczuea2QjBg8eV1aWnLH_q0gN8SiedMh4-hWekTNchm5dDrEEVUJ1oQILCxFnVSuyG1ttVWsNu-uzjI57oKmfncCaKlbG_0pWqOQ3K5hbCJxbsIllGM5D1QLF8IuQ1osKNMyHEtwmdi3zei6KxMTEMnhCufzxk2ePrPiLYokVTzM7_5rp_O6RYpYF992XCV2rbNanf2g=w1712-h925-s-no?authuser=0',
+        ]
+        var currentImgIndex = 0;
+        function changeBackgroundImg() {
+            var wallpaper = document.querySelector('.wallpaper')
+            wallpaper.style.backgroundImage = `url(${backgroundUrl[currentImgIndex]})`
+            currentImgIndex = (currentImgIndex + 1) % backgroundUrl.length
+        }
+        setInterval(changeBackgroundImg, 200000)
     </script>
 </body>
 
