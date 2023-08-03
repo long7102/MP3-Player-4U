@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #ec1f55;
+  --primary-color: #5a7919f5;
   --text-color: #333;
   --dark-color: #100814;
   --dark-mode-text: whitesmoke;
@@ -227,7 +227,7 @@ header h2 {
   display: flex;
   align-items: center;
   margin-bottom: 12px;
-  background-color: #fff;
+  background-color: ghostwhite;
   padding: 8px 16px;
   border-radius: 5px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
